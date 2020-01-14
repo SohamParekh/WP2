@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':termux-helper'
 rootProject.name='WP2'

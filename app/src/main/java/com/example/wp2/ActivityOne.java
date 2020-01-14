@@ -15,7 +15,7 @@ public class ActivityOne extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one);
-        mainGrid = (GridLayout) findViewById(R.id.mainGrid);
+        mainGrid = findViewById(R.id.mainGrid);
 
         //Set Event
         setSingleEvent(mainGrid);

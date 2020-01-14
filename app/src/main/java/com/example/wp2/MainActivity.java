@@ -17,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
         onfirst();
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
     public void doSomething(View view) {
         Intent intent = new Intent(this,ActivityOne.class);
         startActivity(intent);
@@ -24,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
     public void onfirst(){
         boolean isfirstRun = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getBoolean("isfirstRun",true);
         if(isfirstRun){
-            new AlertDialog.Builder(MainActivity.this)
+           AlertDialog alertDialog =  new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Terms & Conditions")
                     .setMessage("T&C")
                     .setNegativeButton("Decline",new DialogInterface.OnClickListener(){
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
                             finish();
                             System.exit(0);
                         }
@@ -39,12 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            if (dialog != null) {
+                                dialog.dismiss();
+                            }
                             getSharedPreferences("PREFERENCE",MODE_PRIVATE)
                                     .edit()
                                     .putBoolean("isfirstRun ",false)
                                     .apply();
                         }
-                    }).show();
+                    }).create();
+           alertDialog.show();
         }
 
     }
