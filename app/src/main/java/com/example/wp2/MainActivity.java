@@ -3,18 +3,41 @@ package com.example.wp2;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import termux_helper.app.TermuxInstaller;
+import termux_helper.app.TermuxService;
+
+public class MainActivity extends AppCompatActivity implements ServiceConnection {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        startTermuxService();
+        installTermuxDependecies();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         onfirst();
+    }
+
+    private void startTermuxService() {
+        Intent serviceIntent = new Intent(this, TermuxService.class);
+        startService(serviceIntent);
+
+        if (!bindService(serviceIntent, this, 0))
+            throw new RuntimeException("bindService() failed");
+    }
+
+    private void installTermuxDependecies() {
+        TermuxInstaller.setupIfNeeded(this, () -> {
+
+        });
+
     }
 
 
@@ -58,5 +81,13 @@ public class MainActivity extends AppCompatActivity {
            alertDialog.show();
         }
 
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
     }
 }
