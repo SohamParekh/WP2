@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     private void startTermuxService() {
         Intent serviceIntent = new Intent(this, TermuxService.class);
         startService(serviceIntent);
+        this.installTermuxDependecies();
 
         if (!bindService(serviceIntent, this, 0))
             throw new RuntimeException("bindService() failed");
