@@ -5,16 +5,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    boolean isfirstRun;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+        getSupportActionBar().hide();
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_main);
-        onfirst();
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE",MODE_PRIVATE);
+        isfirstRun = preferences.getBoolean("isfirstRun",true   );
+        if(isfirstRun) {
+            onfirst();
+        }
     }
 
     public void doSomething(View view) {
@@ -22,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onfirst(){
-        boolean isfirstRun = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getBoolean("isfirstRun",true);
-        if(isfirstRun){
+       // boolean isfirstRun = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getBoolean("isfirstRun",true);
+
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Terms & Conditions")
                     .setMessage("T&C")
@@ -39,13 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            getSharedPreferences("PREFERENCE",MODE_PRIVATE)
-                                    .edit()
-                                    .putBoolean("isfirstRun ",false)
-                                    .apply();
+                            dialog.dismiss();
                         }
                     }).show();
-        }
+
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("isfirstRun",false);
+        editor.apply();
 
     }
 }

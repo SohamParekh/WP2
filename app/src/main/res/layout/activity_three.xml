@@ -22,7 +22,7 @@
 
             <TextView
                 android:id="@+id/textGrid"
-                android:text="Payload Binding"
+                android:text="Phishing Attack"
                 android:textSize="34sp"
                 android:textColor="@android:color/white"
                 android:layout_centerInParent="true"
@@ -59,13 +59,13 @@
                     android:layout_width="253dp"
                     android:layout_height="154dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/payload" />
+                    android:src="@mipmap/phishing" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Payload Binding"
+                    android:text="Phishing Attack"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"

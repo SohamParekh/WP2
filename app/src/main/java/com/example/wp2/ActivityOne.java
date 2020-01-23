@@ -6,6 +6,8 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.GridLayout;
 
 public class ActivityOne extends AppCompatActivity {
@@ -14,11 +16,20 @@ public class ActivityOne extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+        getSupportActionBar().hide();
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_one);
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
 
         //Set Event
-        setSingleEvent(mainGrid);
+        //setSingleEvent(mainGrid);
+    }
+
+    public void doSomething(View view) {
+        Intent intent = new Intent(this,ActivityTwo.class);
+        startActivity(intent);
     }
 
     private void setSingleEvent(GridLayout mainGrid) {
@@ -37,5 +48,15 @@ public class ActivityOne extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void doSomething1(View view) {
+        Intent intent = new Intent(this,ActivityThree.class);
+        startActivity(intent);
+    }
+
+    public void doSomething2(View view) {
+        Intent intent = new Intent(this,ActivityFour.class);
+        startActivity(intent);
     }
 }
