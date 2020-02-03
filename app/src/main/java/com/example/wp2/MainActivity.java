@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,4 +49,8 @@ public class MainActivity extends AppCompatActivity {
         menus.startAnimation(frombottom);
     }
 
+    public void doSomething(View view) {
+        Intent intent = new Intent(this,ActivityOne.class);
+        startActivity(intent);
+    }
 }

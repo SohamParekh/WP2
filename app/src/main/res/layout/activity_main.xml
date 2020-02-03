@@ -137,6 +137,7 @@
                     android:fontFamily="@font/mm"
                     android:gravity="center"
                     android:text="Guide Me"
+                    android:onClick="doSomething"
                     android:textAllCaps="false"
                     android:textColor="#FFF"
                     android:textSize="20sp"
