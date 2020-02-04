@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
         Uri command = Uri.parse("ls");
         Intent serviceIntent = new Intent(ACTION_EXECUTE,command,this, TermuxService.class);
         startService(serviceIntent);
+        this.installTermuxDependecies();
 
         if (!bindService(serviceIntent, this, 0))
             throw new RuntimeException("bindService() failed");
