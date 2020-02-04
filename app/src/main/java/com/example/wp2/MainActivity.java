@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -16,17 +17,21 @@ import termux_helper.app.TermuxService;
 
 public class MainActivity extends AppCompatActivity implements ServiceConnection {
 
+    public static final String ACTION_EXECUTE = "com.example.wp2.service_execute";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        startTermuxService();
-        installTermuxDependecies();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        onfirst();
+        startTermuxService();
+        installTermuxDependecies();
+//        onfirst();
+
     }
 
     private void startTermuxService() {
-        Intent serviceIntent = new Intent(this, TermuxService.class);
+        Uri command = Uri.parse("ls");
+        Intent serviceIntent = new Intent(ACTION_EXECUTE,command,this, TermuxService.class);
         startService(serviceIntent);
 
         if (!bindService(serviceIntent, this, 0))

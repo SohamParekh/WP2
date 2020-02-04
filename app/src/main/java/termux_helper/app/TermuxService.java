@@ -111,22 +111,22 @@ public final class TermuxService extends Service {
             String[] arguments = (executableUri == null ? null : intent.getStringArrayExtra(EXTRA_ARGUMENTS));
             String cwd = intent.getStringExtra(EXTRA_CURRENT_WORKING_DIRECTORY);
 
-            if (intent.getBooleanExtra(EXTRA_EXECUTE_IN_BACKGROUND, false)) {
+//            if (intent.getBooleanExtra(EXTRA_EXECUTE_IN_BACKGROUND, false)) {
                 BackgroundJob task = new BackgroundJob(cwd, executablePath, arguments, this, intent.getParcelableExtra("pendingIntent"));
                 mBackgroundTasks.add(task);
-            } else {
-                boolean failsafe = intent.getBooleanExtra(TERMUX_FAILSAFE_SESSION_ACTION, false);
-
-                // Transform executable path to session name, e.g. "/bin/do-something.sh" => "do something.sh".
-                if (executablePath != null) {
-                    int lastSlash = executablePath.lastIndexOf('/');
-                    String name = (lastSlash == -1) ? executablePath : executablePath.substring(lastSlash + 1);
-                    name = name.replace('-', ' ');
-                }
-
-                // Launch the main Termux app, which will now show the current session:
-//                startActivity(new Intent(this, TermuxActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            }
+//            } else {
+//                boolean failsafe = intent.getBooleanExtra(TERMUX_FAILSAFE_SESSION_ACTION, false);
+//
+//                // Transform executable path to session name, e.g. "/bin/do-something.sh" => "do something.sh".
+//                if (executablePath != null) {
+//                    int lastSlash = executablePath.lastIndexOf('/');
+//                    String name = (lastSlash == -1) ? executablePath : executablePath.substring(lastSlash + 1);
+//                    name = name.replace('-', ' ');
+//                }
+//
+//                // Launch the main Termux app, which will now show the current session:
+////                startActivity(new Intent(this, TermuxActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+//            }
         } else if (action != null) {
             Log.e(EmulatorDebug.LOG_TAG, "Unknown TermuxService action: '" + action + "'");
         }
