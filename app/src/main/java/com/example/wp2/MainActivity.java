@@ -11,6 +11,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import termux_helper.app.TermuxInstaller;
 import termux_helper.app.TermuxService;
@@ -23,17 +28,31 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startTermuxService();
         installTermuxDependecies();
+        startTermuxService();
 //        onfirst();
 
     }
 
     private void startTermuxService() {
-        Uri command = Uri.parse("ls");
+        Uri command = Uri.parse("pkg");
         Intent serviceIntent = new Intent(ACTION_EXECUTE,command,this, TermuxService.class);
         startService(serviceIntent);
-        this.installTermuxDependecies();
+//        try{
+//            java.lang.Process p=Runtime.getRuntime().exec();
+//            BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream()));
+//            String Process_ip;
+//            StringBuffer b=new StringBuffer();
+//            while((Process_ip=reader.readLine())!=null){
+//                b.append("\n"+Process_ip);
+//            }
+//            System.out.println(b.toString());
+//            reader.close();
+//        }catch (IOException e){
+//            Toast.makeText(this, "Unable to execute the command", Toast.LENGTH_SHORT).show();
+//
+//        }
+
 
         if (!bindService(serviceIntent, this, 0))
             throw new RuntimeException("bindService() failed");
