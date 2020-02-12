@@ -79,4 +79,9 @@ public class ActivityOne extends AppCompatActivity {
             return data[position];
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }
