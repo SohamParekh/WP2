@@ -32,6 +32,10 @@ public final class BackgroundJob {
         this(cwd, fileToExecute, args, service, null);
     }
 
+    public static String[] getEnvironment() {
+        return buildEnvironment(false,null);
+    }
+
     public BackgroundJob(String cwd, String fileToExecute, final String[] args, final TermuxService service, PendingIntent pendingIntent) {
         String[] env = buildEnvironment(false, cwd);
         if (cwd == null) cwd = TermuxService.HOME_PATH;
@@ -77,7 +81,7 @@ public final class BackgroundJob {
         new Thread() {
             @Override
             public void run() {
-                Log.i(LOG_TAG, "[" + pid + "] starting: " + processDescription);
+                Log.i(LOG_TAG, "[" + pid + "] starting: " + fileToExecute);
                 InputStream stdout = mProcess.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(stdout, StandardCharsets.UTF_8));
 

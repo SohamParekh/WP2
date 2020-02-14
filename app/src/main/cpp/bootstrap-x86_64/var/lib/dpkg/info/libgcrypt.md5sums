@@ -1,0 +1,12 @@
+a93ada039fd4ac5b3e8dcb1e06337566  data/data/com.termux/files/usr/bin/hmac256
+0b08628405362b0a54c10565c915fe8a  data/data/com.termux/files/usr/bin/mpicalc
+b02bb748e4d6bc2abf4ea5a82b190724  data/data/com.termux/files/usr/bin/dumpsexp
+877c6214b971bfb62796ffc56e1a6e8f  data/data/com.termux/files/usr/bin/libgcrypt-config
+39697163ef13d4d732ad8eeb7d208540  data/data/com.termux/files/usr/share/man/man1/hmac256.1.gz
+0688d6520b1230fd0e127984af64e287  data/data/com.termux/files/usr/share/aclocal/libgcrypt.m4
+ba3922ca39b21be8e4936560d6930922  data/data/com.termux/files/usr/share/info/gcrypt.info-1
+a822a5b2a7c309ecc491d0ef8b54a9c3  data/data/com.termux/files/usr/share/info/gcrypt.info-2
+1c0372f3524d3a27a3a00ec13b88d915  data/data/com.termux/files/usr/share/info/gcrypt.info
+ca5fa1c0416969114912e8b4c983fa08  data/data/com.termux/files/usr/lib/libgcrypt.so
+7cddf391d4aee6378776cad2b0c40360  data/data/com.termux/files/usr/lib/pkgconfig/libgcrypt.pc
+a0d0f3239cd65105d494b0c0b505dba6  data/data/com.termux/files/usr/include/gcrypt.h

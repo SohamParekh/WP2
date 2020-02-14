@@ -192,7 +192,7 @@ public final class TermuxInstaller {
     }
 
     static void setupStorageSymlinks(final Context context) {
-        final String LOG_TAG = "termux-storage";
+        final String LOG_TAG = "wp2-storage";
         new Thread() {
             public void run() {
                 try {
