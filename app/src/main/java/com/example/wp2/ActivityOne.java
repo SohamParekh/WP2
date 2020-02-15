@@ -1,62 +1,99 @@
 package com.example.wp2;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.GridLayout;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class ActivityOne extends AppCompatActivity {
 
-    GridLayout mainGrid;
+    TabLayout mytab;
+    ViewPager mypage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_one);
-        mainGrid = (GridLayout) findViewById(R.id.mainGrid);
 
-        //Set Event
-        //setSingleEvent(mainGrid);
+        mytab = (TabLayout)findViewById(R.id.tab);
+        mypage = (ViewPager)findViewById(R.id.page);
+
+        mypage.setAdapter(new MyOwnPagerAdapter(getSupportFragmentManager()));
+        mytab.setupWithViewPager(mypage);
+        mytab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mypage.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
+    class MyOwnPagerAdapter extends FragmentPagerAdapter{
 
-    public void doSomething(View view) {
-        Intent intent = new Intent(this,ActivityTwo.class);
-        startActivity(intent);
-    }
+        String data[] = {"Payload","Phishing","Wifi-Access"};
+        public MyOwnPagerAdapter(@NonNull FragmentManager fm) {
+            super(fm);
+        }
 
-    private void setSingleEvent(GridLayout mainGrid) {
-        for (int i = 0; i < mainGrid.getChildCount(); i++) {
-            //You can see , all child item is CardView , so we just cast object to CardView
-            CardView cardView = (CardView) mainGrid.getChildAt(i);
-            final int finalI = i;
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            if(position == 0)
+                return new Payload();
+            if(position == 1)
+                return new Phishing();
+            if (position == 2)
+                return new wifiaccess();
+            return null;
+        }
 
-                    Intent intent = new Intent(ActivityOne.this,ActivityTwo.class);
-                    intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);
-
-                }
-            });
+        @Override
+        public int getCount() {
+            return data.length;
+        }
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return data[position];
         }
     }
 
-    public void doSomething1(View view) {
-        Intent intent = new Intent(this,ActivityThree.class);
-        startActivity(intent);
-    }
-
-    public void doSomething2(View view) {
-        Intent intent = new Intent(this,ActivityFour.class);
-        startActivity(intent);
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        ActivityOne.this.finishAffinity();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }

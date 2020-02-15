@@ -10,9 +10,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    ImageView bgapp, clover;
+    LinearLayout textsplash, texthome, menus;
+    Animation frombottom;
     boolean isfirstRun;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,43 +31,26 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_main);
-        SharedPreferences preferences = getSharedPreferences("PREFERENCE",MODE_PRIVATE);
-        isfirstRun = preferences.getBoolean("isfirstRun",true   );
-        if(isfirstRun) {
-            onfirst();
-        }
+
+        frombottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
+
+
+        bgapp = (ImageView) findViewById(R.id.bgapp);
+        clover = (ImageView) findViewById(R.id.clover);
+        textsplash = (LinearLayout) findViewById(R.id.textsplash);
+        texthome = (LinearLayout) findViewById(R.id.texthome);
+        menus = (LinearLayout) findViewById(R.id.menus);
+
+        bgapp.animate().translationY(-1900).setDuration(800).setStartDelay(300);
+        clover.animate().alpha(0).setDuration(800).setStartDelay(600);
+        textsplash.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(300);
+
+        texthome.startAnimation(frombottom);
+        menus.startAnimation(frombottom);
     }
 
     public void doSomething(View view) {
         Intent intent = new Intent(this,ActivityOne.class);
         startActivity(intent);
-    }
-    public void onfirst(){
-       // boolean isfirstRun = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getBoolean("isfirstRun",true);
-
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("Terms & Conditions")
-                    .setMessage("T&C")
-                    .setNegativeButton("Decline",new DialogInterface.OnClickListener(){
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                            System.exit(0);
-                        }
-                    })
-                    .setPositiveButton("Accept",new DialogInterface.OnClickListener(){
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).show();
-
-        SharedPreferences preferences = getSharedPreferences("PREFERENCE",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("isfirstRun",false);
-        editor.apply();
-
     }
 }
