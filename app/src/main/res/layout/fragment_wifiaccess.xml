@@ -24,7 +24,7 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="About Wifi Access"
                 android:textSize="36sp" />
@@ -36,17 +36,18 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/wifiacc_1"
                 android:textColor="@android:color/background_dark"
-                android:text="Here you are going to learn and experience how the wifi connection works and let the authorized device to connect with the router. You are also going to experience brute force attack to connect with the router. " />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/button"
+                style="@style/button_design"
                 android:layout_width="356dp"
                 android:layout_height="43dp"
-                android:layout_marginTop="10dp"
-                style="@style/button_design"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
                 android:text="Perform Practical" />
         </LinearLayout>
     </ScrollView>

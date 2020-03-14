@@ -9,13 +9,14 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:src="@drawable/sport" />
+        android:src="@drawable/tandcicon" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="#000A0A0A"
+        android:gravity="center"
         android:text="Terms and Conditions"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:text="Welcome to Wp^2 App"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
