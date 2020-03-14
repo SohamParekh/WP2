@@ -1,7 +1,9 @@
 package com.termux;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -15,6 +17,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.termux.app.TermuxActivity;
 
 public class ActivityOne extends AppCompatActivity {
 
@@ -94,5 +97,10 @@ public class ActivityOne extends AppCompatActivity {
                 })
                 .setNegativeButton("No", null)
                 .show();
+    }
+
+    public void startTermuxActivity(View view) {
+        Intent intent = new Intent(ActivityOne.this, TermuxActivity.class);
+        startActivity(intent);
     }
 }

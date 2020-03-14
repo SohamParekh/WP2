@@ -86,11 +86,12 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="356dp"
-                android:layout_marginTop="10dp"
                 style="@style/button_design"
+                android:layout_width="356dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:onClick="startTermuxActivity"
                 android:text="Perform Practical" />
         </LinearLayout>
     </ScrollView>

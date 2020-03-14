@@ -381,8 +381,8 @@ public final class TermuxService extends Service implements SessionChangedCallba
     private void setupNotificationChannel() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
 
-        String channelName = "Termux";
-        String channelDescription = "Notifications from Termux";
+        String channelName = "WP2";
+        String channelDescription = "Notifications from WP2";
         int importance = NotificationManager.IMPORTANCE_LOW;
 
         NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName,importance);
