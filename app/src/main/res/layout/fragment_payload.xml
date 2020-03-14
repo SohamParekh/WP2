@@ -36,6 +36,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="20dp"
+                android:gravity="fill_horizontal"
                 android:text="In computer networking and telecommunication when a transmission unit is sent from the source to the destination, it contains both a header and the actual data to be transmitted. This actual data is called the payload."
                 android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />
@@ -47,9 +48,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/pay_2"
                 android:textColor="@android:color/background_dark"
-                android:text="The header of the payload contains the protocol information as well as the source and the destination addresses, to deliver the payload." />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -58,9 +60,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/pay_3"
                 android:textColor="@android:color/background_dark"
-                android:text="Here we are creating a payload which can give us the access of victim’s device such as call log, contacts etc. The application which we are going to create is called the RAT (Remote Access Trojan)." />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -69,9 +72,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/pay_4"
                 android:textColor="@android:color/background_dark"
-                android:text="So, next question is what is Trojan?" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -80,17 +84,18 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/pay_5"
                 android:textColor="@android:color/background_dark"
-                android:text="You can define Trojan as pretend to be something other than what you actually are. Victim will download application and install which was sent by attacker as the trusted application but payload which we created would be with that application and will work as we order. " />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/button"
-                style="@style/button_design"
                 android:layout_width="356dp"
+                android:layout_marginTop="20dp"
+                style="@style/button_design"
                 android:layout_height="43dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
                 android:onClick="startTermuxActivity"
                 android:text="Perform Practical" />
         </LinearLayout>

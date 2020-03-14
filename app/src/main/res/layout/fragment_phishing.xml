@@ -24,7 +24,7 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="About Phishing"
                 android:textSize="36sp" />
@@ -36,9 +36,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/phi_1"
                 android:textColor="@android:color/background_dark"
-                android:text="Phishing is a method of trying to gather personal information using deceptive e-mails and websites. Phishing is a cyber attack that the message as a weapon. The goal is to trick the email recipient into believing that the message is something they want or need a request from their bank, for instance, or a note from someone in their company and to click a link or download an attachment." />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -47,9 +48,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/phi_2"
                 android:textColor="@android:color/background_dark"
-                android:text="“Phish” is pronounced just like it’s spelled, which is to say like the word “fish” the analogy is of an angler throwing a baited hook out there (The phishing email) and hoping you bite." />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -58,9 +60,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/phi_3"
                 android:textColor="@android:color/background_dark"
-                android:text="You are going to experience the phishing attack in the application. You are going to attack on your own device to experience how phishing is working and how your data is vulnerable in this kind of attack." />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -69,15 +72,16 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
+                android:gravity="fill_horizontal"
+                android:text="@string/phi_4"
                 android:textColor="@android:color/background_dark"
-                android:text="You are going to create a phishing page of well known websites. And access that same website from your device. As the security is the major concern we can not provide that phishing website facility over the internet but still it would provide you the same experience as the internet." />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="356dp"
                 android:layout_height="43dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 style="@style/button_design"
                 android:layout_marginLeft="30dp"
                 android:text="Perform Practical" />
