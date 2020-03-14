@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':terminal-emulator', ':terminal-view'
 rootProject.name='WP2'
