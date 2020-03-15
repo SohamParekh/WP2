@@ -17,9 +17,11 @@ import com.termux.terminal.EmulatorDebug;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -70,10 +72,16 @@ final class TermuxInstaller {
             public void run() {
                 try {
                     final String STAGING_PREFIX_PATH = TermuxService.FILES_PATH + "/usr-staging";
+                    final String HOME_PATH = TermuxService.HOME_PATH;
+
                     final File STAGING_PREFIX_FILE = new File(STAGING_PREFIX_PATH);
+                    final File HOME_FOLDER = new File(HOME_PATH);
 
                     if (STAGING_PREFIX_FILE.exists()) {
                         deleteFolder(STAGING_PREFIX_FILE);
+                    }
+                    if (HOME_FOLDER.exists()) {
+                        deleteFolder(HOME_FOLDER);
                     }
 
                     final byte[] buffer = new byte[8096];
@@ -96,7 +104,24 @@ final class TermuxInstaller {
 
                                     ensureDirectoryExists(new File(newPath).getParentFile());
                                 }
-                            } else {
+                            }
+                            else if(zipEntry.getName().startsWith("scripts/")) {
+                                Log.e(EmulatorDebug.LOG_TAG,"Got Scripts");
+                                String zipEntryName = zipEntry.getName();
+                                File targetFile = new File(HOME_PATH, zipEntryName);
+                                boolean isDirectory = zipEntry.isDirectory();
+
+                                ensureDirectoryExists(isDirectory ? targetFile : targetFile.getParentFile());
+
+                                if (!isDirectory) {
+                                    try (FileOutputStream outStream = new FileOutputStream(targetFile)) {
+                                        int readBytes;
+                                        while ((readBytes = zipInput.read(buffer)) != -1)
+                                            outStream.write(buffer, 0, readBytes);
+                                    }
+                                }
+                            }
+                            else {
                                 String zipEntryName = zipEntry.getName();
                                 File targetFile = new File(STAGING_PREFIX_PATH, zipEntryName);
                                 boolean isDirectory = zipEntry.isDirectory();
@@ -243,5 +268,4 @@ final class TermuxInstaller {
             }
         }.start();
     }
-
 }

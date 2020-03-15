@@ -51,8 +51,9 @@
             android:name=".MainActivity"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".ActivityOne" />
-
+        <activity android:name=".ActivityOne"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name="com.termux.app.TermuxActivity"
 	    android:label="@string/app_name"
