@@ -49,7 +49,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:onClick="startTermuxActivity"
-                android:text="Perform Practical" />
+                android:text="Create Wifi-Access" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

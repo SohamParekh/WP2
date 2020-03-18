@@ -11,6 +11,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -40,8 +41,10 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +84,10 @@ import androidx.viewpager.widget.ViewPager;
  * about memory leaks.
  */
 public final class TermuxActivity extends Activity implements ServiceConnection {
+
+
+    EditText input;
+    ScrollView view;
 
     public static final String TERMUX_FAILSAFE_SESSION_ACTION = "com.termux.app.failsafe_session";
 
@@ -211,6 +218,8 @@ public final class TermuxActivity extends Activity implements ServiceConnection 
 
         setContentView(R.layout.drawer_layout);
 
+
+
         if (mIsUsingBlackUI) {
             findViewById(R.id.left_drawer).setBackgroundColor(
                 getResources().getColor(android.R.color.background_dark)
@@ -311,6 +320,8 @@ public final class TermuxActivity extends Activity implements ServiceConnection 
             return true;
         });
 
+
+
         registerForContextMenu(mTerminalView);
 
         Intent serviceIntent = new Intent(this, TermuxService.class);
@@ -323,7 +334,314 @@ public final class TermuxActivity extends Activity implements ServiceConnection 
 
         mBellSoundId = mBellSoundPool.load(this, R.raw.bell, 1);
     }
-
+    public void doSomething(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        String text_copy = "pwd";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething1(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter File Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "cat " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething2(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter File Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "cp " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething3(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter File Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "download " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething4(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        //builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter Folder Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "cd " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething5(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "ls";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething6(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter File Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "mv " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething7(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        //builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter Folder Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "mkdir " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething8(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        //builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter Folder Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "upload " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething9(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "shell";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething10(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "screenshot";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething11(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "webcam_snap";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething12(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("File Name");
+        builder.setMessage("Enter File Name");
+        input = new EditText(this);
+        input.setHint("Enter File Name");
+        builder.setView(input);
+        builder.setPositiveButton("Copy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                String txt = "play " + input.getText().toString();
+                ClipData clip = ClipData.newPlainText("EditText",txt);
+                clipboardManager.setPrimaryClip(clip);
+                Toast.makeText(TermuxActivity.this,"Command Copied",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+    }
+    public void doSomething13(View view) {;ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "dump_calllog";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething14(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "dump_contacts";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething15(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "dump_sms";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething16(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "hide_app_icon";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething17(View view) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        //Bundle b1 = getIntent().getExtras();
+        // String s1 = b1.getString("user");
+        String text_copy = "set_audio_mode";
+        ClipData clip = ClipData.newPlainText("EditText",text_copy);
+        clipboardManager.setPrimaryClip(clip);
+        //Log.e("COPYTEXT",clipboardManager.getPrimaryClip().toString());
+        Toast.makeText(this,"Command Copied",Toast.LENGTH_SHORT).show();
+    }
+    public void doSomething18(View view) {
+        /*Intent intent = new Intent(this,Main2Activity.class);
+        startActivity(intent);*/
+    }
     void toggleShowExtraKeys() {
         final ViewPager viewPager = findViewById(R.id.viewpager);
         final boolean showNow = mSettings.toggleShowExtraKeys(TermuxActivity.this);
