@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Phishing">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,6 +29,7 @@
                 android:gravity="center"
                 android:text="About Phishing"
                 android:textSize="36sp" />
+
 
             <TextView
                 android:id="@+id/textView2"
@@ -82,9 +84,14 @@
                 android:layout_width="356dp"
                 android:layout_height="43dp"
                 android:layout_marginTop="20dp"
+<<<<<<< Updated upstream
                 style="@style/button_design"
                 android:layout_marginLeft="30dp"
                 android:text="Perform Practical" />
+=======
+                android:onClick="startTermuxActivity"
+                android:text="Create Phishing" />
+>>>>>>> Stashed changes
             </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

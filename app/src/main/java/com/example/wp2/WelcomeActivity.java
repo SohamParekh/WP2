@@ -1,6 +1,7 @@
 package com.example.wp2;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,6 +19,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+<<<<<<< Updated upstream:app/src/main/java/com/example/wp2/WelcomeActivity.java
+=======
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+>>>>>>> Stashed changes:app/src/main/java/com/termux/WelcomeActivity.java
 public class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -142,5 +150,17 @@ public class WelcomeActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
+    }
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+            .setMessage("Are you sure you want to exit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    WelcomeActivity.this.finishAffinity();
+                }
+            })
+            .setNegativeButton("No", null)
+            .show();
     }
 }

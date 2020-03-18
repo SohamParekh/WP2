@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Payload">
 
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -96,7 +98,12 @@
                 style="@style/button_design"
                 android:layout_height="43dp"
                 android:layout_marginLeft="30dp"
+<<<<<<< Updated upstream
                 android:text="Perform Practical" />
+=======
+                android:onClick="startTermuxActivity"
+                android:text="Create Payload" />
+>>>>>>> Stashed changes
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@
     tools:context=".wifiaccess">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +49,14 @@
                 android:layout_height="43dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
+<<<<<<< Updated upstream
                 android:text="Perform Practical" />
+=======
+                android:onClick="startTermuxActivity"
+                android:text="Create Wifi Access" />
+
+
+>>>>>>> Stashed changes
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
