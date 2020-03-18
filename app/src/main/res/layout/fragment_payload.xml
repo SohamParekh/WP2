@@ -97,7 +97,7 @@
                 android:layout_height="43dp"
                 android:layout_marginLeft="30dp"
                 android:onClick="startTermuxActivity"
-                android:text="Perform Practical" />
+                android:text="Create Payload" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

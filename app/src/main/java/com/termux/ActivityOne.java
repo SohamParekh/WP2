@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.termux.app.TermuxActivity;
 
 public class ActivityOne extends AppCompatActivity {
-
+    boolean v=false;
     TabLayout mytab;
     ViewPager mypage;
     @Override
@@ -42,6 +42,7 @@ public class ActivityOne extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mypage.setCurrentItem(tab.getPosition());
+
             }
 
             @Override
@@ -100,6 +101,7 @@ public class ActivityOne extends AppCompatActivity {
     }
 
     public void startTermuxActivity(View view) {
+        v=true;
         Intent intent = new Intent(ActivityOne.this, TermuxActivity.class);
         startActivity(intent);
     }
