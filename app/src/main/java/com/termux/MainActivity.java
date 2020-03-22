@@ -1,5 +1,6 @@
 package com.termux;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,5 +50,17 @@ public class MainActivity extends AppCompatActivity {
     public void doSomething(View view) {
         Intent intent = new Intent(this,ActivityOne.class);
         startActivity(intent);
+    }
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+            .setMessage("Are you sure you want to exit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    MainActivity.this.finishAffinity();
+                }
+            })
+            .setNegativeButton("No", null)
+            .show();
     }
 }
