@@ -1,5 +1,5 @@
 plugins {
-  id "com.android.application"
+    id "com.android.application"
 }
 
 android {
@@ -85,14 +85,16 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.13'
     testImplementation 'org.robolectric:robolectric:4.3.1'
 }
 
 task versionName {
-  doLast {
-    print android.defaultConfig.versionName
-  }
+    doLast {
+        print android.defaultConfig.versionName
+    }
 }
 
 //New Files
@@ -189,18 +191,18 @@ clean {
 
 //NEW Files
 
-task downloadBootstraps(){
+task downloadBootstraps() {
     doLast {
         def version = 20
         downloadBootstrap("aarch64", "880250daff368447ce250c0320d7f296373fbfa9b8a488ccc91cf456f7c18056", version)
-        downloadBootstrap("arm",     "d1ebc2178c38111809e57c103976a77cdde35e70553223d07f60ce8fc278aeb2", version)
-        downloadBootstrap("i686",    "58504534030251eb9f22c0e163d1fcfe5ec8bbad90199e9d141dc7e2f646acd", version)
-        downloadBootstrap("x86_64",  "13d135e9fb24a8f41c4f2f0175df15b61a95a186da32243f72c1fcf9782d5bda", version)
+        downloadBootstrap("arm", "d1ebc2178c38111809e57c103976a77cdde35e70553223d07f60ce8fc278aeb2", version)
+        downloadBootstrap("i686", "58504534030251eb9f22c0e163d1fcfe5ec8bbad90199e9d141dc7e2f646acd", version)
+        downloadBootstrap("x86_64", "13d135e9fb24a8f41c4f2f0175df15b61a95a186da32243f72c1fcf9782d5bda", version)
     }
 }
 
 afterEvaluate {
-  android.applicationVariants.all { variant ->
-    variant.javaCompileProvider.get().dependsOn(downloadBootstraps)
-  }
+    android.applicationVariants.all { variant ->
+        variant.javaCompileProvider.get().dependsOn(downloadBootstraps)
+    }
 }

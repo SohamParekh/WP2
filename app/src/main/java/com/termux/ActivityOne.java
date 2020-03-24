@@ -89,20 +89,24 @@ public class ActivityOne extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        ActivityOne.this.finishAffinity();
-                    }
-                })
-                .setNegativeButton("No", null)
-                .show();
+            .setMessage("Are you sure you want to exit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    ActivityOne.this.finishAffinity();
+                }
+            })
+            .setNegativeButton("No", null)
+            .show();
     }
 
     public void startTermuxActivity(View view) {
-        v=true;
+
         Intent intent = new Intent(ActivityOne.this, TermuxActivity.class);
+        startActivity(intent);
+    }
+    public void startWifiActivity(View view){
+        Intent intent = new Intent(ActivityOne.this, wifiactivity.class);
         startActivity(intent);
     }
 }

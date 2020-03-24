@@ -48,7 +48,7 @@
                 android:layout_height="43dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:onClick="startTermuxActivity"
+                android:onClick="startWifiActivity"
                 android:text="Create Wifi-Access" />
         </LinearLayout>
     </ScrollView>
