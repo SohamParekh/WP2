@@ -27,7 +27,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="About Wifi Access"
-                android:textSize="36sp" />
+                android:textSize="28sp" />
+
+            <Button
+                android:id="@+id/button"
+                style="@style/button_design"
+                android:layout_width="356dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:onClick="startWifiActivity"
+                android:text="Create Wifi-Access" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -39,17 +49,9 @@
                 android:gravity="fill_horizontal"
                 android:text="@string/wifiacc_1"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/button"
-                style="@style/button_design"
-                android:layout_width="356dp"
-                android:layout_height="43dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:onClick="startWifiActivity"
-                android:text="Create Wifi-Access" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

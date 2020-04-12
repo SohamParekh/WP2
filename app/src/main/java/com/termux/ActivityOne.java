@@ -58,7 +58,7 @@ public class ActivityOne extends AppCompatActivity {
     }
     class MyOwnPagerAdapter extends FragmentPagerAdapter{
 
-        String data[] = {"Payload","Phishing","Wifi-Access"};
+        String data[] = {"Payload","Phishing"};
         public MyOwnPagerAdapter(@NonNull FragmentManager fm) {
             super(fm);
         }
@@ -70,8 +70,8 @@ public class ActivityOne extends AppCompatActivity {
                 return new Payload();
             if(position == 1)
                 return new Phishing();
-            if (position == 2)
-                return new wifiaccess();
+            /*if (position == 2)
+                return new wifiaccess();*/
             return null;
         }
 

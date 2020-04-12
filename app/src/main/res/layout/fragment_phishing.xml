@@ -7,19 +7,20 @@
     tools:context=".Phishing">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.009">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -27,7 +28,18 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="About Phishing"
-                android:textSize="36sp" />
+                android:textSize="28sp" />
+
+            <Button
+                android:id="@+id/button"
+                style="@style/button_design"
+                android:layout_width="356dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:onClick="startTermuxActivity"
+                android:text="Create Phishing" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -39,7 +51,7 @@
                 android:gravity="fill_horizontal"
                 android:text="@string/phi_1"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -51,7 +63,7 @@
                 android:gravity="fill_horizontal"
                 android:text="@string/phi_2"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -63,7 +75,7 @@
                 android:gravity="fill_horizontal"
                 android:text="@string/phi_3"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -75,17 +87,8 @@
                 android:gravity="fill_horizontal"
                 android:text="@string/phi_4"
                 android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
+                android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/button"
-                style="@style/button_design"
-                android:layout_width="356dp"
-                android:layout_height="43dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:onClick="startTermuxActivity"
-                android:text="Create Phishing" />
-            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

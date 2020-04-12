@@ -72,7 +72,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         });
-        layouts = new int[]{R.layout.slider_1,R.layout.slider_2, R.layout.slider_3, R.layout.slider_4};
+        layouts = new int[]{R.layout.slider_1,R.layout.slider_2, R.layout.slider_3};
         pagerAdapter = new MyPagerAdapter(layouts,getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
 
